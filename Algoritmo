@@ -1,0 +1,62 @@
+#Criado por: Mikelly Correia
+# Trabalho final da disciplina de Estruturas de Dados e Algoritmo
+
+Classe No ():
+  valor = chave
+  esq = nulo
+  dir = nulo
+
+Classe ArvoreBinaria ():
+
+  Função CriarNo(chave):
+    no = No(chave)
+    raiz = no
+
+#Algoritmo de Busca Binária
+
+Pont = raiz
+Função Busca(Pont, chave, F):
+    if (Pont == nulo):
+        F=0
+    else:
+        if (chave == Pont.valor):
+            F=1
+        else:
+            if (chave < Pont.valor):
+                if (Pont.esq == nulo):
+                    F=2
+                else:
+                    Pont = Pont.esq
+                    Busca(Pont, chave, F)
+            else:
+                if (Pont.dir == nulo):
+                    F=3
+                else:
+                    Pont = Pont.dir
+                    Busca (Pont, chave, F)
+    return Pont, F
+
+#Algoritmo de Inclusão
+
+Função Inserir(Pont, chave, F):
+    Pont = raiz
+    Busca (Pont, chave, F)
+    if (F == 1):
+        print ("Chave já existe!")
+    else:
+        novo = NO ()
+        novo.valor = chave
+        novo.esq = nulo
+        novo.dir = nulo
+        if (F == 0):
+            raiz = novo
+        else:
+
+          if (F ==2):
+                Pont.esq = novo
+            else:
+                Pont.dir = novo 
+
+
+
+    
