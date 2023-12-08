@@ -14,8 +14,8 @@ Classe ArvoreBinaria ():
 
 #Algoritmo de Busca Binária
 
-Pont = raiz
-Função Busca(Pont, chave, F):
+  Pont = raiz
+  Função Busca(Pont, chave, F):
     if (Pont == nulo):
         F=0
     else:
@@ -38,7 +38,7 @@ Função Busca(Pont, chave, F):
 
 #Algoritmo de Inclusão
 
-Função Inserir(Pont, chave, F):
+  Função Inserir(Pont, chave, F):
     Pont = raiz
     Busca (Pont, chave, F)
     if (F == 1):
