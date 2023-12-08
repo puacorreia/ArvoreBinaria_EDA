@@ -57,6 +57,44 @@ Classe ArvoreBinaria ():
             else:
                 Pont.dir = novo 
 
+  Função Excluir(chave):
+    Busca(chave, raiz, Pont, pai, F)
+    if (F == 1):
+      if (Pont.esq == nulo):
+          if Pont == raiz:
+              raiz= raiz.dir
+          else:
+              if (Pont == pai.esq):
+                  pai.esq = Pont.dir
+              else:
+                  pai.dir = Pont.dir
+      else:
+          if (Pont.dir == nulo):
+              if (Pont == raiz):
+                  raiz = raiz.esq 
+              else:
+                  if (Pont == pai.esq):
+                      pai.esq = Pont.esq
+                  else:
+                      pai.dir = Pont.esq
+          else:
+              Pont_aux = Pont.dir
+              Pai_aux = Pont
 
+              while (Pont_aux.esq != nulo):
+                  Pai = Pont_aux
+                  Pont_aux = Pont
+              if (Pai_aux != Pont):
+                  Pai_aux.esq = Pont_aux.dir
+                  Pont_aux.dir = Pont.dir
+              Pont_aux = Pont.esq
+              if (Pont == raiz):
+                  raiz = Pont_aux
+              else:
+                  if (pai.esq == Pont):
+                      pai.esq = Pont_aux
+                  else:
+                      pai.dir = Pont_aux
+    dell Pont
 
     
