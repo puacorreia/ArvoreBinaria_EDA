@@ -24,12 +24,14 @@ Classe Pilha_Encad:
     else:
       print("Pilha vazia")
 
-Classe No ():
+Classe No:
+
+Função NovoNo():
   valor = chave
   esq = nulo
   dir = nulo
 
-Classe ArvoreBinaria ():
+Classe ArvoreBinaria:
 
   Função CriarNo(chave):
     no = No(chave)
