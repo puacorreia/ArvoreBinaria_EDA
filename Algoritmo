@@ -1,6 +1,29 @@
 #Criado por: Mikelly Correia
 # Trabalho final da disciplina de Estruturas de Dados e Algoritmo
 
+Classe Pilha_Encad:
+
+  Função CriarElemento():
+    valor = 0
+    prox = nulo
+  topo = nulo
+
+  Função Empilhar(chave, topo)
+    novo = Elemento()
+    novo.valor = chave
+    novo.prox = topo
+    topo = novo
+    return topo
+
+  Função Desempilhar(topo)
+    if (topo != none):
+      print(topo.valor)
+      aux = topo
+      topo = topo.prox
+      dell aux
+    else:
+      print("Pilha vazia")
+
 Classe No ():
   valor = chave
   esq = nulo
