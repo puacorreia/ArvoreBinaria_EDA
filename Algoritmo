@@ -174,5 +174,8 @@ while True:
           arv.Percurso()
      elif op == 6:
           op = False
+    else:
+          print("Opção Inválida!")
+          op = True
 
 
