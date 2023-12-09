@@ -141,9 +141,8 @@ Função MostrarArvore():
 
 arv = ArvoreBinaria()
 print("------------------------- Programa Árvore Binária ----------------------------------")
-op = 0
 
-while op !=6:
+while True:
   print("*************************************************************")
   print("1°) Inserir Elemento")
   print("2°) Exclusão de Elemento")
@@ -172,6 +171,6 @@ while op !=6:
      elif op == 5:
           arv.Percurso()
      elif op == 6:
-          break (tenho qu tirar)
+          return False
 
 
