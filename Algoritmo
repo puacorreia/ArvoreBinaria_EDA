@@ -9,7 +9,7 @@ Classe Pilha_Encad:
   topo = nulo
 
   Função Empilhar(chave, topo)
-    novo = Elemento()
+    novo = Pilha_Encad()
     novo.valor = chave
     novo.prox = topo
     topo = novo
