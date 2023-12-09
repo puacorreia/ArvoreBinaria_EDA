@@ -122,4 +122,56 @@ Classe ArvoreBinaria:
                       pai.dir = Pont_aux
     dell Pont
 
-    
+Função Percursso ():
+  pilha = Pilha_Encad()
+  Pont = raiz
+
+  while ( (Pont !=0) and (topo > 0)):
+      print(Pont.valor)
+      if (Pont.dir != nulo):
+        pilha.Empilhar(Pont)
+      if (Pont.esq != nulo):
+        Pont = Pont.esq
+      else:
+          pilha.Desempilhar
+
+Função MostrarArvore():
+  print("Em construção")
+
+
+arv = ArvoreBinaria()
+print("------------------------- Programa Árvore Binária ----------------------------------")
+op = 0
+
+while op !=6:
+  print("*************************************************************")
+  print("1°) Inserir Elemento")
+  print("2°) Exclusão de Elemento")
+  print("3°) Busca Elemento")
+  print("4°) Exibir Árvore Binária")
+  print("5°) Pecorrer Árvore Binária - Pré-Ordem")
+  print("6°) Sair do programa")
+  print("**************************************************************")
+
+  op = int(input("Informe uma opção:"))
+     if op == 1:
+          chave = int(input(" Informe o valor:"))
+          arv.Inserir(chave)
+     elif op == 2:
+          chave = int(input(" Informe o valor:"))
+          if arv.Excluir(chave) == False:
+               print(" Valor nao encontrado!")
+     elif op == 3:
+          chave = int(input(" Informe o valor:"))
+          if arv.Busca(chave) != None:
+               print(" Valor Encontrado")
+          else:
+               print(" Valor nao encontrado!")
+     elif op == 4:
+          arv.MostrarArvore
+     elif op == 5:
+          arv.Percurso()
+     elif op == 6:
+          break (tenho qu tirar)
+
+
