@@ -3,7 +3,7 @@
 
 Classe Pilha_Encad:
 
-  Função CriarElemento():
+  Função Pilha_Encad():
     valor = 0
     prox = nulo
   topo = nulo
