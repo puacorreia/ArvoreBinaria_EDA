@@ -1,150 +1,177 @@
 #Criado por: Mikelly Correia
 # Trabalho final da disciplina de Estruturas de Dados e Algoritmo
 
-Classe Pilha_Encad:
+class No:
+ Função __init__():
+      valor = chave
+      prox = None
+      esq = None
+      dir = None
 
-  Função Pilha_Encad():
-    valor = 0
-    prox = nulo
-  topo = nulo
+#Algoritmo de Pilha Encadeada
 
-  Função Empilhar(chave, topo)
-    novo = Pilha_Encad()
-    novo.valor = chave
-    novo.prox = topo
-    topo = novo
-    return topo
+class Pilha_Encad:
+  Função  __init__(chave):
+      base = None
+      topo = None
+      tamanho = 0
+      Empilhar(chave)
 
-  Função Desempilhar(topo)
-    if (topo != none):
-      print(topo.valor)
-      aux = topo
-      topo = topo.prox
-      dell aux
-    else:
-      print("Pilha vazia")
+  Função Empilhar(chave):
+      novo = No(chave)
+      novo.prox = topo
+      topo = novo
+      tamanho += 1
 
-Classe No:
-
-Função NovoNo():
-  valor = chave
-  esq = nulo
-  dir = nulo
+  Função Desempilhar():
+      if tamanho == 0:
+          print('A lista está vazia.')
+      else:
+          print(topo.valor)
+          aux = topo
+          topo = topo.prox
+          tamanho -= 1
+          del aux
 
 Classe ArvoreBinaria:
 
-  Função CriarNo(chave):
-    no = No(chave)
-    raiz = no
-
 #Algoritmo de Busca Binária
 
-  Pont = raiz
-  Função Busca(Pont, chave, F):
-    if (Pont == nulo):
-        F=0
-    else:
-        if (chave == Pont.valor):
-            F=1
-        else:
-            if (chave < Pont.valor):
-                if (Pont.esq == nulo):
-                    F=2
-                else:
-                    Pont = Pont.esq
-                    Busca(Pont, chave, F)
-            else:
-                if (Pont.dir == nulo):
-                    F=3
-                else:
-                    Pont = Pont.dir
-                    Busca (Pont, chave, F)
-    return Pont, F
+  Função __init__():
+      raiz = None
 
-#Algoritmo de Inclusão
-
-  Função Inserir(Pont, chave, F):
-    Pont = raiz
-    Busca (Pont, chave, F)
-    if (F == 1):
-        print ("Chave já existe!")
-    else:
-        novo = NO ()
-        novo.valor = chave
-        novo.esq = nulo
-        novo.dir = nulo
-        if (F == 0):
-            raiz = novo
-        else:
-
-          if (F ==2):
-                Pont.esq = novo
-            else:
-                Pont.dir = novo 
-
-  Função Excluir(chave):
-    Busca(chave, raiz, Pont, pai, F)
-    if (F == 1):
-      if (Pont.esq == nulo):
-          if Pont == raiz:
-              raiz= raiz.dir
-          else:
-              if (Pont == pai.esq):
-                  pai.esq = Pont.dir
-              else:
-                  pai.dir = Pont.dir
+  Função busca( pont, chave, f):
+      if pont == None:
+          f = 0
       else:
-          if (Pont.dir == nulo):
-              if (Pont == raiz):
-                  raiz = raiz.esq 
-              else:
-                  if (Pont == pai.esq):
-                      pai.esq = Pont.esq
-                  else:
-                      pai.dir = Pont.esq
+          if chave == pont.valor:
+              f = 1
           else:
-              Pont_aux = Pont.dir
-              Pai_aux = Pont
-
-              while (Pont_aux.esq != nulo):
-                  Pai = Pont_aux
-                  Pont_aux = Pont
-              if (Pai_aux != Pont):
-                  Pai_aux.esq = Pont_aux.dir
-                  Pont_aux.dir = Pont.dir
-              Pont_aux = Pont.esq
-              if (Pont == raiz):
-                  raiz = Pont_aux
-              else:
-                  if (pai.esq == Pont):
-                      pai.esq = Pont_aux
+              if chave < pont.valor:
+                  if pont.esq == None:
+                      f = 2
                   else:
-                      pai.dir = Pont_aux
-    dell Pont
+                      pont, f = self.busca(pont.esq, chave, f)
+              else:
+                  if pont.dir == None:
+                      f = 3
+                  else:
+                      pont, f = self.busca(pont.dir, chave, f)
+      return pont, f
+
+#Algoritmo de Inclusão de chave
+
+  Função inserir(chave):
+    if raiz == None:
+        novo = No(chave)
+        novo.esq = None
+        novo.dir = None
+        raiz = novo
+    else:
+        pont = raiz
+        f = None
+        pont, f= self.busca(pont, chave, f)
+        if f == 1:
+            print("Elemento já Existe!")
+        else:
+            novo = No(chave)
+            novo.esq = None
+            novo.dir = None
+            if f == 2:
+                pont.esq = novo
+            else:
+                pont.dir = novo
+
+#Algoritmo de Exclusão de chave
+
+   Função excluir(chave):
+      f = None
+      pont, pai, f = self.busca_pai(raiz, None, chave, f)
+      if pont != None:
+          if pont.esq == None:
+              if pont == raiz:
+                  raiz = pont.dir
+              else:
+                  if pont == pai.esq:
+                      pai.esq = pont.dir
+                  else:
+                      pai.dir = pont.dir
+          else:
+              if pont.dir == None:
+                  if pont == raiz:
+                      raiz = pont.esq
+                  else:
+                      if pont == pai.esq:
+                          pai.esq = pont.esq
+                      else:
+                          pai.dir = pont.esq
+              else:
+                  pont_aux = pont.dir
+                  pai_aux = pont
+
+                  while pont_aux.esq != None:
+                      pai = pont_aux
+                      pont_aux = pont_aux.esq
+                  if pai_aux != pont:
+                      pai_aux.esq = pont_aux.dir
+                      pont_aux.dir = pont.dir
+                  pont_aux = pont.esq
+                  if pont == raiz:
+                      raiz = pont_aux
+                  else:
+                      if pai.esq == pont:
+                          pai.esq = pont_aux
+                      else:
+                          pai.dir = pont_aux
+          del pont
+          print("Chave excluída")
+      else:
+          print("Chave não encontrado!")
+
+#Algoritmo de Busca do pai
+
+Função busca_pai(pont, pai, chave, f):
+        if pont == None:
+            f = 0
+        else:
+            if chave == pont.valor:
+                f = 1
+            else:
+                if chave < pont.valor:
+                    pai = pont
+                    pont, pai, f = self.busca_pai(pont.esq, pai, chave, f)
+                else:
+                    pai = pont
+                    pont, pai, f = self.busca_pai(pont.dir, pai, chave, f)
+
+        return pont, pai, f
 
 Função Percursso ():
-  pilha = Pilha_Encad()
-  Pont = raiz
+  pont = self.raiz
+  pilha = Pilha_Encad(pont)
+  pilha.Empilhar(pont)
+      
+  while (pont != None) and (pilha.topo != None):
+        pont = pilha.Desempilhar()
+        print (pont.valor)
+      
+      if (pont.dir != None):
+          pilha.Empilhar(pont.dir)
+      if (pont.esq != None):
+          pilha.Empilhar(pont.esq)
 
-  while ( (Pont !=0) and (topo > 0)):
-      print(Pont.valor)
-      if (Pont.dir != nulo):
-        pilha.Empilhar(Pont)
-      if (Pont.esq != nulo):
-        Pont = Pont.esq
-      else:
-          pilha.Desempilhar
-
-Função MostrarArvore():
-  print("Em construção")
+Função MostrarArvore(pont, nivel=0):
+  if pont != None:
+            mostrar_arvore(pont.dir, nivel + 1)
+            print(" " * 4 * nivel + "->", pont.valor)
+            mostrar_arvore(pont.esq, nivel + 1)
 
 
 arv = ArvoreBinaria()
 print("------------------------- Programa Árvore Binária ----------------------------------")
-
 op = True
 
-while True:
+while op == True:
   print("*************************************************************")
   print("1°) Inserir Elemento")
   print("2°) Exclusão de Elemento")
@@ -155,27 +182,32 @@ while True:
   print("**************************************************************")
 
   op = int(input("Informe uma opção:"))
-     if op == 1:
-          chave = int(input(" Informe o valor:"))
-          arv.Inserir(chave)
-     elif op == 2:
-          chave = int(input(" Informe o valor:"))
-          if arv.Excluir(chave) == False:
-               print(" Valor nao encontrado!")
-     elif op == 3:
-          chave = int(input(" Informe o valor:"))
-          if arv.Busca(chave) != None:
-               print(" Valor Encontrado")
-          else:
-               print(" Valor nao encontrado!")
-     elif op == 4:
-          arv.MostrarArvore
-     elif op == 5:
-          arv.Percurso()
-     elif op == 6:
-          op = False
+  if op == 1:
+      chave = int(input("Informe o valor:"))
+      arv.inserir(chave)
+  elif op == 2:
+      chave = int(input("Informe o valor:"))
+      arv.excluir(chave)
+      op = True
+      
+  elif op == 3:
+    f = None
+    chave = int(input("Informe o valor: "))
+    pont, pai, f = arv.busca_pai(arv.raiz, None, chave, f)
+    if pont == None:
+        print("Chave não encontrada!")
     else:
-          print("Opção Inválida!")
-          op = True
+        print("Chave encontrada!")
+    op = True   
+  elif op == 4:
+      arv.mostrar_arvore(arv.raiz)
+      op = True
+  elif op == 5:
+      arv.percurso()
+  elif op == 6:
+      op = False
+  else:
+      print("Opção Inválida!")
+      op = True
 
 
