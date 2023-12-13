@@ -6,27 +6,28 @@ class No:
       self.dir = None
 
 class Pilha_Encad:
-  def __init__(self, chave):
-      self.base = None
+  def __init__(self):
       self.topo = None
       self.tamanho = 0
-      self.Empilhar(chave)
 
   def Empilhar(self, chave):
       novo = No(chave)
       novo.prox = self.topo
-      self.topo = novo
-      self.tamanho += 1
+      if self.topo == None:
+        self.topo = novo
+        self.tamanho += 1
+      else:
+        novo.prox = self.topo
+        self.topo = novo
 
   def Desempilhar(self):
       if self.tamanho == 0:
           print('A lista está vazia.')
       else:
-          print(self.topo.valor)
-          aux = self.topo
+          aux = self.topo.valor
           self.topo = self.topo.prox
           self.tamanho -= 1
-          del aux
+          return aux
 
 #Codigo da Arvore Binaria
 
@@ -136,17 +137,15 @@ class ArvoreBinaria:
 
   def percurso(self):
       pont = self.raiz
-      pilha = Pilha_Encad(pont)
-      pilha.Empilhar(pont)
-      
-      while (pont is not None) and (pilha.topo is not None):
-          pont = pilha.Desempilhar()
-          print (pont.valor)
-      
-      if (pont.dir is not None):
-          pilha.Empilhar(pont.dir)
-      if (pont.esq is not None):
-          pilha.Empilhar(pont.esq)
+      pilha = Pilha_Encad()
+      while (pont is not None):
+        print(pont.valor)
+        if (pont.dir is not None):
+            pilha.Empilhar(pont.dir)
+        if (pont.esq is not None):
+            pont = pont.esq
+        else:
+            pont = pilha.Desempilhar()
 
       
   def mostrar_arvore(self, pont, nivel=0):
